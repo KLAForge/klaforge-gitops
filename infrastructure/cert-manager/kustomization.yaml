@@ -3,5 +3,7 @@ kind: Kustomization
 
 resources:
   - cluster-issuer-staging.yaml
+  - cluster-issuer-production.yaml
   - certificate-staging.yaml
+  - certificate-production.yaml
   - ovh-webhook-rbac.yaml

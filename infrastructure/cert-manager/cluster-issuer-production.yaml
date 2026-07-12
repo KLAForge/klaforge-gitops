@@ -1,0 +1,32 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    email: kevinlopesamaro@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+
+    privateKeySecretRef:
+      name: letsencrypt-production-account-key
+
+    solvers:
+      - dns01:
+          webhook:
+            groupName: acme.klaforge.dev
+            solverName: ovh
+            config:
+              endpoint: ovh-eu
+              authenticationMethod: application
+
+              applicationKeyRef:
+                name: ovh-credentials
+                key: applicationKey
+
+              applicationSecretRef:
+                name: ovh-credentials
+                key: applicationSecret
+
+              applicationConsumerKeyRef:
+                name: ovh-credentials
+                key: consumerKey
