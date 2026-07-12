@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    app.kubernetes.io/part-of: klaforge
+    environment: test
