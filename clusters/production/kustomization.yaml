@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - applications/namespaces.yaml
+  - applications/cert-manager.yaml
