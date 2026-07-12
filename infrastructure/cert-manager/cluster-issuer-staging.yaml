@@ -16,19 +16,17 @@ spec:
             groupName: acme.klaforge.dev
             solverName: ovh
             config:
-              configVersion: "0.0.2"
-              ovhEndpointName: ovh-eu
-              ovhAuthenticationMethod: application
+              endpoint: ovh-eu
+              authenticationMethod: application
 
-              ovhAuthenticationRef:
-                applicationKeyRef:
-                  name: ovh-credentials
-                  key: applicationKey
+              applicationKeyRef:
+                name: ovh-credentials
+                key: applicationKey
 
-                applicationSecretRef:
-                  name: ovh-credentials
-                  key: applicationSecret
+              applicationSecretRef:
+                name: ovh-credentials
+                key: applicationSecret
 
-                applicationConsumerKeyRef:
-                  name: ovh-credentials
-                  key: consumerKey
+              applicationConsumerKeyRef:
+                name: ovh-credentials
+                key: consumerKey
