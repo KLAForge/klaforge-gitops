@@ -15,8 +15,7 @@ spec:
     helm:
       releaseName: cert-manager-webhook-ovh
       values: |
-        config:
-          groupName: acme.klaforge.dev
+        groupName: acme.klaforge.dev
 
   destination:
     server: https://kubernetes.default.svc
