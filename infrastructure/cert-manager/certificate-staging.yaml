@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: klaforge-dev-wildcard-staging
+  namespace: test
+spec:
+  secretName: klaforge-dev-wildcard-staging-tls
+
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+
+  dnsNames:
+    - klaforge.dev
+    - "*.klaforge.dev"
