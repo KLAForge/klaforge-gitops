@@ -10,8 +10,11 @@ metadata:
     app.kubernetes.io/managed-by: argocd
 spec:
   secretName: klaforge-dev-tls
+
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
+
   dnsNames:
     - klaforge.dev
+    - www.klaforge.dev

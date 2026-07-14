@@ -25,7 +25,19 @@ spec:
                 port:
                   name: http
 
+    - host: www.klaforge.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: klaforge-landing-page
+                port:
+                  name: http
+
   tls:
     - hosts:
         - klaforge.dev
+        - www.klaforge.dev
       secretName: klaforge-dev-tls
