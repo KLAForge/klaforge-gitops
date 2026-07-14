@@ -7,3 +7,4 @@ resources:
   - certificate-staging.yaml
   - certificate-production.yaml
   - ovh-webhook-rbac.yaml
+  - certificate-klaforge.yaml
