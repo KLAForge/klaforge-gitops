@@ -1,0 +1,267 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: klaforge-landing-page
+  namespace: klaforge
+  labels:
+    app.kubernetes.io/name: klaforge-landing-page
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: klaforge
+    app.kubernetes.io/managed-by: argocd
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="KLAForge, plateforme Kubernetes GitOps personnelle.">
+
+      <title>KLAForge</title>
+
+      <style>
+        :root {
+          color-scheme: dark;
+          --bg: #080b12;
+          --panel: #111827;
+          --border: #263244;
+          --text: #f8fafc;
+          --muted: #94a3b8;
+          --accent: #f97316;
+          --success: #22c55e;
+        }
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          min-height: 100vh;
+          font-family: Inter, system-ui, sans-serif;
+          color: var(--text);
+          background:
+            radial-gradient(circle at top left, rgba(249, 115, 22, 0.16), transparent 30%),
+            radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.12), transparent 30%),
+            var(--bg);
+        }
+
+        .container {
+          width: min(1100px, calc(100% - 32px));
+          margin: 0 auto;
+        }
+
+        header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          min-height: 80px;
+        }
+
+        .brand {
+          font-weight: 800;
+          letter-spacing: 0.12em;
+        }
+
+        .status {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          color: var(--muted);
+          font-size: 0.9rem;
+        }
+
+        .dot {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: var(--success);
+          box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+        }
+
+        main {
+          display: grid;
+          min-height: calc(100vh - 140px);
+          align-items: center;
+          padding: 60px 0;
+        }
+
+        .hero {
+          max-width: 850px;
+        }
+
+        .eyebrow {
+          margin-bottom: 20px;
+          color: var(--accent);
+          font-size: 0.8rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+        }
+
+        h1 {
+          max-width: 900px;
+          font-size: clamp(3rem, 9vw, 7rem);
+          line-height: 0.95;
+          letter-spacing: -0.06em;
+        }
+
+        h1 span {
+          color: var(--accent);
+        }
+
+        .intro {
+          max-width: 720px;
+          margin-top: 28px;
+          color: var(--muted);
+          font-size: 1.15rem;
+          line-height: 1.7;
+        }
+
+        .actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+          margin-top: 34px;
+        }
+
+        .button {
+          display: inline-flex;
+          min-height: 48px;
+          padding: 0 20px;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          color: var(--text);
+          font-weight: 700;
+          text-decoration: none;
+          background: rgba(17, 24, 39, 0.9);
+        }
+
+        .button-primary {
+          border-color: var(--accent);
+          color: #111827;
+          background: var(--accent);
+        }
+
+        .stack {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 14px;
+          margin-top: 56px;
+        }
+
+        .card {
+          padding: 20px;
+          border: 1px solid var(--border);
+          border-radius: 14px;
+          background: rgba(17, 24, 39, 0.78);
+        }
+
+        .card strong {
+          display: block;
+          margin-bottom: 6px;
+        }
+
+        .card span {
+          color: var(--muted);
+          font-size: 0.85rem;
+        }
+
+        footer {
+          padding: 24px 0 32px;
+          color: #64748b;
+          font-size: 0.8rem;
+        }
+
+        @media (max-width: 760px) {
+          .stack {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+
+        @media (max-width: 480px) {
+          .stack {
+            grid-template-columns: 1fr;
+          }
+
+          .button {
+            width: 100%;
+          }
+        }
+      </style>
+    </head>
+
+    <body>
+      <div class="container">
+        <header>
+          <div class="brand">KLAFORGE</div>
+
+          <div class="status">
+            <span class="dot"></span>
+            <span>Platform operational</span>
+          </div>
+        </header>
+
+        <main>
+          <section class="hero">
+            <div class="eyebrow">Personal cloud-native platform</div>
+
+            <h1>
+              Building infrastructure
+              <span>the GitOps way.</span>
+            </h1>
+
+            <p class="intro">
+              KLAForge est une plateforme Kubernetes personnelle conçue
+              comme une véritable plateforme d'entreprise : déclarative,
+              automatisée, sécurisée et entièrement pilotée par Git.
+            </p>
+
+            <div class="actions">
+              <a
+                class="button button-primary"
+                href="https://github.com/KLAForge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Voir le projet GitHub
+              </a>
+
+              <a class="button" href="https://test.klaforge.dev">
+                Environnement de test
+              </a>
+            </div>
+
+            <div class="stack">
+              <article class="card">
+                <strong>K3s</strong>
+                <span>Kubernetes distribution</span>
+              </article>
+
+              <article class="card">
+                <strong>Argo CD</strong>
+                <span>Continuous delivery</span>
+              </article>
+
+              <article class="card">
+                <strong>Traefik</strong>
+                <span>Ingress controller</span>
+              </article>
+
+              <article class="card">
+                <strong>cert-manager</strong>
+                <span>Automated TLS</span>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          KLAForge · Kubernetes · GitOps · Infrastructure as Code
+        </footer>
+      </div>
+    </body>
+    </html>

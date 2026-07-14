@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: klaforge-landing-page
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: klaforge-landing-page
+    app.kubernetes.io/component: application
+    app.kubernetes.io/part-of: klaforge
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/KLAForge/klaforge-gitops.git
+    targetRevision: main
+    path: applications/landing-page
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: klaforge
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=false
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

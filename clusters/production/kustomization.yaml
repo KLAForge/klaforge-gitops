@@ -7,3 +7,4 @@ resources:
   - applications/cert-manager-webhook-ovh.yaml
   - applications/certificates.yaml
   - applications/test-web.yaml
+  - applications/landing-page.yaml
