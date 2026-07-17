@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    traefik.ingress.kubernetes.io/service.serversscheme: https
+
 spec:
   ingressClassName: traefik
 
@@ -27,4 +27,4 @@ spec:
               service:
                 name: argocd-server
                 port:
-                  name: https
+                  name: http
