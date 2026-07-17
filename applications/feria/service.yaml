@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: feria-app
+  namespace: feria
+  labels:
+    app.kubernetes.io/name: feria-app
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: klaforge
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: feria-app
+
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

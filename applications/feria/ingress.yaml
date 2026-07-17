@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: feria-app
+  namespace: feria
+  labels:
+    app.kubernetes.io/name: feria-app
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: klaforge
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: traefik
+
+  tls:
+    - hosts:
+        - feria.klaforge.dev
+      secretName: feria-klaforge-dev-tls
+
+  rules:
+    - host: feria.klaforge.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: feria-app
+                port:
+                  name: http

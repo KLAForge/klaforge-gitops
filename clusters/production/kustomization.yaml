@@ -8,3 +8,4 @@ resources:
   - applications/certificates.yaml
   - applications/test-web.yaml
   - applications/landing-page.yaml
+  - applications/feria.yaml

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: feria
+  labels:
+    app.kubernetes.io/name: feria
+    app.kubernetes.io/managed-by: argocd
+    app.kubernetes.io/part-of: klaforge
+    environment: production
