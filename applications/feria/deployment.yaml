@@ -40,7 +40,7 @@ spec:
 
       containers:
         - name: feria-app
-          image: ghcr.io/klaforge/feria-app:sha-0eb4447
+          image: ghcr.io/klaforge/feria-app:sha-cddeb6b
           imagePullPolicy: IfNotPresent
 
           ports:
