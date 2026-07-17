@@ -1,12 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: feria-app
-  namespace: feria
-  labels:
-    app.kubernetes.io/name: feria-app
-    app.kubernetes.io/component: frontend
-    app.kubernetes.io/part-of: klaforge
 spec:
   replicas: 1
 
@@ -32,6 +23,9 @@ spec:
     spec:
       securityContext:
         runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
         seccompProfile:
           type: RuntimeDefault
 
