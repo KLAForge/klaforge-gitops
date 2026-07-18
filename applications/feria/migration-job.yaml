@@ -1,0 +1,58 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: feria-prisma-migrate
+  namespace: feria
+  labels:
+    app.kubernetes.io/name: feria-prisma-migrate
+    app.kubernetes.io/component: database-migration
+    app.kubernetes.io/part-of: klaforge
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+
+spec:
+  backoffLimit: 3
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: feria-prisma-migrate
+        app.kubernetes.io/component: database-migration
+        app.kubernetes.io/part-of: klaforge
+
+    spec:
+      restartPolicy: Never
+
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+
+      containers:
+        - name: prisma-migrate
+          image: ghcr.io/klaforge/feria-app:sha-e033c3d-migrate
+          imagePullPolicy: IfNotPresent
+
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: feria-postgres
+                  key: DATABASE_URL
+
+          resources:
+            requests:
+              cpu: 25m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop:
+                - ALL
