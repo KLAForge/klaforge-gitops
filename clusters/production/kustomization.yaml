@@ -10,3 +10,4 @@ resources:
   - applications/landing-page.yaml
   - applications/feria.yaml
   - applications/argocd-ingress.yaml
+  - applications/feria-postgres.yaml

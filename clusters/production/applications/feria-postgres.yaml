@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: klaforge-feria-postgres
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: feria-postgres
+    app.kubernetes.io/component: database
+    app.kubernetes.io/part-of: klaforge
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/KLAForge/klaforge-gitops.git
+    targetRevision: main
+    path: applications/feria-postgres
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: feria
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=false
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
