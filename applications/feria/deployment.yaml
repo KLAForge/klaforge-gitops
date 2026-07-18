@@ -40,7 +40,7 @@ spec:
 
       containers:
         - name: feria-app
-          image: ghcr.io/klaforge/feria-app:sha-e033c3d
+          image: ghcr.io/klaforge/feria-app:sha-ca6ea6a
           imagePullPolicy: IfNotPresent
 
           ports:
@@ -64,6 +64,10 @@ spec:
                   name: feria-postgres
                   key: DATABASE_URL
 
+          envFrom:
+            - secretRef:
+                name: feria-app-secrets
+
           readinessProbe:
             httpGet:
               path: /
@@ -85,10 +89,10 @@ spec:
           resources:
             requests:
               cpu: 50m
-              memory: 64Mi
+              memory: 128Mi
             limits:
-              cpu: 500m
-              memory: 256Mi
+              cpu: 750m
+              memory: 512Mi
 
           securityContext:
             allowPrivilegeEscalation: false

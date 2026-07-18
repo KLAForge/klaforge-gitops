@@ -30,7 +30,7 @@ spec:
 
       containers:
         - name: prisma-migrate
-          image: ghcr.io/klaforge/feria-app:sha-e033c3d-migrate
+          image: ghcr.io/klaforge/feria-app:sha-ca6ea6a-migrate
           imagePullPolicy: IfNotPresent
 
           env:
